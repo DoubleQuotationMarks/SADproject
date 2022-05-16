@@ -86,6 +86,29 @@ const LoadableBookDetail= Loadable({
 	delay: 300
 });
 
+const LoadableHomePage= Loadable({
+    loader: () => import('./functions/UserHome/userHome'),
+      loading: Loading,
+      delay: 300
+  });
+
+  const LoadableUserGymList= Loadable({
+    loader: () => import('./functions/GymList/index'),
+      loading: Loading,
+      delay: 300
+  });
+
+  const LoadableUserGymEquip= Loadable({
+    loader: () => import('./functions/GymEqp/CustEqp'),
+      loading: Loading,
+      delay: 300
+  });
+  const LoadableUserStat= Loadable({
+    loader: () => import('./functions/userStatistic/userStat'),
+      loading: Loading,
+      delay: 300
+  });
+
 // const Tabs = (props) => (
 // 	<Bundle load={ () => import('./functions/Index/Tabs')}>
 // 		{ (Tabs) => <Tabs {...props} /> }
@@ -122,10 +145,10 @@ const RouterList = () => (
 	<Router>
 			<div>
 					<Switch>
-						<Route exact path="/" component={LoadableTabs}/>
-						<Route exact path="/post/:id" component={LoadableArticleDetail}/>
-						<Route exact path="/book/:id" component={LoadableBookDetail}/>
-						<Route exact path="/Lists" component={List}/>
+                        <Route exact path="/" component={LoadableHomePage}/>
+                        <Route exact path="/userstat" component={LoadableUserStat}/>
+                        <Route exact path="/gymlist" component={LoadableUserGymList}/>
+                        <Route exact path="/gymequip" component={LoadableUserGymEquip}/>
 					</Switch>
 			</div>
 	</Router>

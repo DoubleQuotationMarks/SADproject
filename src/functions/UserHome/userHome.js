@@ -83,9 +83,18 @@ class UserHome extends Component {
       {this.state.reservation.map( ( reservationData)  =>(
       <div>
           
-     
+          <WingBlank size="lg">
+          <WhiteSpace size="lg" />
+          <Card>
+            <Card.Header
+              title={reservationData.activity}
+              extra={reservationData.date + '  ' + reservationData.detail.time}
+            />
+            <Card.Footer content={reservationData.detail.machine} extra={reservationData.detail.Gym } />
+          </Card>
+        </WingBlank>
          
-                <WingBlank size="sm">
+                {/* <WingBlank size="sm">
                 <WhiteSpace size="sm" />
              
             <Accordion defaultActiveKey="1"  onChange={this.onChange} >
@@ -101,7 +110,7 @@ class UserHome extends Component {
             <WhiteSpace size="sm" />
                                 </WingBlank>
 
-         
+          */}
          
          
              

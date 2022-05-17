@@ -142,16 +142,16 @@ const LoadableHomePage= Loadable({
 // 运用react-loading 进行划分
 const RouterList = () => (
 	<Router>
-			<div>
-      <Navigation />
 					<Switch>
+            
+                        <div>
+                        <Navigation />
                         <Route exact path="/" component={LoadableHomePage}/>
                         <Route exact path={"/userstat"} component={LoadableUserStat}/>
                         <Route exact path="/gymlist" component={LoadableUserGymList}/>
                         <Route exact path="/gymequip/:id" component={LoadableUserGymEquip}/>
+                        </div>        
 					</Switch>
-         
-			</div>
 	</Router>
 )
 

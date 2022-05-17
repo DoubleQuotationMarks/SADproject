@@ -6,9 +6,9 @@ import axios from 'axios'
 
 
 
-const api = axios.create({
-    baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/gymlist'
-  })
+// const api = axios.create({
+//     baseURL:'https://sadbackend-cyt.herokuapp.com/api/v1/gym/list'
+//   })
 
 
 
@@ -24,12 +24,18 @@ class GymList extends Component {
 
      constructor(){
        super();
-       api.get('/').then(res =>{
-         console.log(res.data)
-         this.setState({Gym :res.data})
-       })
-     }
+    //    api.get('/').then(res =>{
+    //      console.log(res.code)
+    //      this.setState({Gym :res.data})
+    //    })
 
+       axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/gym/list').then( 
+           (response) => {console.log(response)
+           this.setState({Gym :response.data.data})
+           
+     })
+     }
+     
 
 
     // state = { 
@@ -81,41 +87,43 @@ class GymList extends Component {
                 <Button href="/" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
                 <h1 class ="GymTitle"> Gym List</h1>
                 {this.state.Gym.map((GymData) => (
-                                <div>
-                                <WhiteSpace size="sm" />
+                   
+                        <div>
+                        <WhiteSpace size="sm" />
+                        
+                            {/* <Item href={"gymequip"+GymData.GymName} className="am-list-itemGymList" arrow="horizontal"  onClick={() => {}} extra={"comfort"} id ={GymData.id} am-list-content >
                                 
-                                    {/* <Item href={"gymequip"+GymData.GymName} className="am-list-itemGymList" arrow="horizontal"  onClick={() => {}} extra={"comfort"} id ={GymData.id} am-list-content >
-                                        
-                                        {GymData.GymName}  
-                                    <Brief>{GymData.address}</Brief>
-                                    </Item> */}
+                                {GymData.GymName}  
+                            <Brief>{GymData.address}</Brief>
+                            </Item> */}
 
-                                        <Button  className = "UserLink"  href={"gymequip/"+GymData.GymName}  >
-                                        {GymData.capacity <= 20 ?
-                                        (  <div class="circleStat " style ={{ backgroundColor: "#57FF89"} }></div>) 
-                                        :( <div class="circleStat " style ={{ backgroundColor: "#FF6164"} }></div> )}
+                                <Button  className = "UserLink"  href={"gymequip/"+GymData.name}  >
+                                {GymData.status == 'uncrowed' ?
+                                (  <div class="circleStat " style ={{ backgroundColor: "#57FF89"} }></div>) 
+                                :( <div class="circleStat " style ={{ backgroundColor: "#FF6164"} }></div> )}
 
-                                        {GymData.capacity <= 20 ?
-                                        (  <p class ="buttontext2  "style ={{ color: "#57FF89"} }>comfort </p>) 
-                                        :( <p class ="buttontext2 " style ={{ color:"#FF6164"} }>crowded </p> )}   
+                                {GymData.status == "uncrowed" ?
+                                (  <p class ="buttontext2  "style ={{ color: "#57FF89"} }>comfort </p>) 
+                                :( <p class ="buttontext2 " style ={{ color:"#FF6164"} }>crowded </p> )}   
 
-                                        <p class = "buttontext">{GymData.GymName}
-                                  
-                                        <p class="buttonDescription"  >address</p> </p>
+                                <p class = "buttontext">{GymData.name}
+                          
+                                <p class="buttonDescription"  >{GymData.address}</p> </p>
 
-                                  
-                    
-                                        </Button>
-                                        <WhiteSpace size="xl" />
-                                    
-                                <WhiteSpace size="sm" />
-                                </div>
+                          
+            
+                                </Button>
+                                <WhiteSpace size="xl" />
+                            
+                        <WhiteSpace size="sm" />
+                        </div>
 
-                )
-                    
-                    
-                    
-                )}
+              
+                               
+                ))
+
+
+                }
                 
             </div>
             

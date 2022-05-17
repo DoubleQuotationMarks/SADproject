@@ -141,7 +141,7 @@ class UserStat extends Component {
           }
        
           };
-          console.log(this.state.situation.id)
+     
 
           const caloriesConfigs = {
             type: "column2d", // The chart type

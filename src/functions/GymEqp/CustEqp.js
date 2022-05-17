@@ -10,147 +10,205 @@ import {
   } from "react-router-dom";
   import { withRouter } from "react-router";
   import axios from 'axios'
-
-
+import abs from "./abs.png"
+import arm from './arm.png'
+import back from './back.png'
+import cardio from './cardio.png'
+import chest from './chest.png'
+import hips from './hip.png'
+import leg from './leg.png'
 
 const Item = List.Item;
 const Brief = Item.Brief;
      let Gymname = window.location.pathname
          let Gymname1 = Gymname.replace('/gymequip/','')
 
-const api = axios.create({
-    baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/'+Gymname1
-  })
+// const api = axios.create({
+//     baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/'+Gymname1
+//   })
   
 class CustomerEquipment extends Component {
    
     state = {
-        equip:[]
+        EQUIP:[]
       }
 
      constructor(){
        super();
-       api.get('/').then(res =>{
-         console.log(res.data)
-         this.setState({equip :res.data})
-       })
+      //  api.get('/').then(res =>{
+      //    console.log(res.data)
+      //    this.setState({equip :res.data})
+      //  })
+      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/gym/machine?gym_id=branch-1000001&sorted_by=category').then( 
+        (response) => {
+          console.log(response.data.data)
+          console.log(Object.getOwnPropertyNames(response.data))
+           this.setState({ EQUIP:response.data.data})
+        
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+
      }
 
-        //     state = {
-            
-        //             equip : [{
-        //                             "id": 1,
-        //                             "workout" : "running" ,
-        //                            "equipment":[{
-        //                                             "equipmentId" :1 ,
-        //                                             "equipmentName" :"treadmil_01",
-        //                                             "people" :  "20ppl"
-        //                                         },
-        //                                         {
-        //                                             "equipmentId" :2 ,
-        //                                             "equipmentName" :"treadmil_02",
-        //                                             "people" :  "20ppl"
-        //                                         },
-        //                                         {
-        //                                             "equipmentId" :3 ,
-        //                                             "equipmentName" :"treadmil_03",
-        //                                             "people" :  "20ppl"
-        //                                         }
-                                
-        //                         ]},
-        //                         {
-        //                             id: 2,
-        //                             workout : "abs" ,
-        //                             equipment:[{
-        //                                             equipmentId :1 ,
-        //                                             equipmentName :"abs_01",
-        //                                             people :  "20ppl"
-        //                                         },
-        //                                         {
-        //                                             equipmentId :2 ,
-        //                                             equipmentName :"abs_02",
-        //                                             people : "20ppl"
-        //                                         },
-        //                                         {
-        //                                             equipmentId :3 ,
-        //                                             equipmentName :"abs_03",
-        //                                             people :  "20ppl"
-        //                                         }
-                                
-        //                         ]},
-        //                         {
-        //                             id: 3,
-        //                             workout : "abs" ,
-        //                             equipment:[{
-        //                                             equipmentId :1 ,
-        //                                             equipmentName :"back_01",
-        //                                             people : "20ppl"
-        //                                         },
-        //                                         {
-        //                                             equipmentId :2 ,
-        //                                             equipmentName :"back_02",
-        //                                             people : "20ppl"
-        //                                         },
-        //                                         {
-        //                                             equipmentId :3 ,
-        //                                             equipmentName :"back_03",
-        //                                             people : "20ppl"
-        //                                         }
-                                
-        //                         ]},
-                            
-                                        
-                        
-            
-            
-            
-        //     ]
-        // }
       
     render() { 
-    
+  
         return (
-            <div class="shapeGymequip ">
+            <div style={{backgroundColor: "#FFF3D4" }}>
                  
-                 <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
+            <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
             <p class ="CustTittle">{Gymname1}</p>   
             <br></br>
-           {this.state.equip.map( ( equipData )  =>(
+            {/* <p>{EQUIP}</p> */}
+            {/* {this.state.EQUIP.map((data) => (
+              <div>{data}</div>
+            ))} */}
+           {/* {this.state.equip.map( ( equipData )  =>(  
            <div  >
-               <WingBlank size="sm">
-                <WhiteSpace size="sm" />                
+            <WingBlank size="sm">
+            <WhiteSpace size="sm" />                
             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} >
            
-          
-            <Accordion.Panel header= {equipData.workout}    >
-           
-          
-           {equipData.equipment.map((barang ) => (
-              
+          {Object.getOwnPropertyNames(equipData) == 'abs' ? 
+            <Accordion.Panel header= {  
+            <div style ={{backgroundColor:"#46B862"}}>
+            <img src={abs} style= {{marginLeft : "30px" }}/>
+            </div>} >
+                      {equipData.equipment.map((barang ) => (
+                          <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                              <div>{barang.equipmentName}
+                              {barang.people <= 5 ? (
+                                <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                              ) :(
+                                <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                              )}       
+                              </div>
+                          </Item>
+                      ))}
+            </Accordion.Panel>
+            : Object.getOwnPropertyNames(equipData) == 'arm'?
+            <Accordion.Panel header= {
+              <div style ={{backgroundColor:"#FAA61A"}}>
+              <img src={arm} style= {{marginLeft : "30px" }}/>
+              </div>}
+               >
+            {equipData.equipment.map((barang ) => (
+                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                    <div>{barang.equipmentName}
+                    {barang.people <= 5 ? (
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    ) :(
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    )}       
+                    </div>
+                </Item>
+            ))}
+            </Accordion.Panel>
+            : Object.getOwnPropertyNames(equipData) == 'back' ?
+            <Accordion.Panel header= {
+              <div style ={{backgroundColor:"#F5D19B"}}>
+              <img src={back} style= {{marginLeft : "30px" }}/>
+              </div>} >
+            {equipData.equipment.map((barang ) => (
+                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                    <div>{barang.equipmentName}
+                    {barang.people <= 5 ? (
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    ) :(
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    )}       
+                    </div>
+                </Item>
+            ))}
+            </Accordion.Panel>
+            : Object.getOwnPropertyNames(equipData) == 'cardio' ?
+            <Accordion.Panel header= {
+              <div style ={{backgroundColor:"#DE5D4D"}}>
+              <img src={cardio} style= {{marginLeft : "30px" }}/>
+              </div>
+            }>
+            {equipData.equipment.map((barang ) => (
+                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                    <div>{barang.equipmentName}
+                    {barang.people <= 5 ? (
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    ) :(
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    )}       
+                    </div>
+                </Item>
+            ))}
+            </Accordion.Panel>
+            : Object.getOwnPropertyNames(equipData) == "chest" ?
+            <Accordion.Panel header= {
+              <div style ={{backgroundColor:"#3B5998"}}>
+              <img src={chest} style= {{marginLeft : "30px" }}/>
+              </div>
+            }>
+            {equipData.equipment.map((barang ) => (
+                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                    <div>{barang.equipmentName}
+                    {barang.people <= 5 ? (
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    ) :(
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    )}       
+                    </div>
+                </Item>
+            ))}
+            </Accordion.Panel>
+          : Object.getOwnPropertyNames(equipData) == "hips" ?
+          <Accordion.Panel header= {
+            <div style ={{backgroundColor:"#ADADAD"}}>
+            <img src={hips} style= {{marginLeft : "30px" }}/>
+            </div>
+          }>
+          {equipData.equipment.map((barang ) => (
+              <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                  <div>{barang.equipmentName}
+                  {barang.people <= 5 ? (
+                    <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                  ) :(
+                    <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                  )}       
+                  </div>
+              </Item>
+          ))}
+          </Accordion.Panel>
+            :
+            <Accordion.Panel header= {
+              <div style ={{backgroundColor:"#8E78FF"}}>
+              <img src={leg} style= {{marginLeft : "30px" }}/>
+              </div>
+            }>
+            {equipData.equipment.map((barang ) => (
+                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                    <div>{barang.equipmentName}
+                    {barang.people <= 5 ? (
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    ) :(
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    )}       
+                    </div>
+                </Item>
+            ))}
+            </Accordion.Panel>
+          }
 
-               <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
-                   <div>{barang.equipmentName}
-                   {barang.people <= 5 ? (
-                     <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
-                   ) :(
-                     <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
-                   )}       
-               
-                   </div>
-                
-               </Item>
-  
-           ))}
-           </Accordion.Panel>
-           
-          
-       
-         
             </Accordion>
             <WhiteSpace size="sm" />
             </WingBlank>
-        </div>) )}
+            
+        </div>) )} */}
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         </div>
+      
         );
     }
 }

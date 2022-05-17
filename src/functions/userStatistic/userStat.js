@@ -171,32 +171,34 @@ class UserStat extends Component {
             };
         return (
             <div style={{backgroundColor: "#FFF3D4" }}>
+                 
+                 <Button href="/" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
                 <h1 class ="UserTittle">Statistic</h1>
                 <WhiteSpace size ="xs"/>
              {this.state.situation.map((graph) => (
                <div>
                    <Button type="primary"  className = "UserButtonRed1"  inline style={{ marginLeft: '80px' }} >
-                   <h1 style={{ color: 'white' }}>{graph.userstat.staytime}  <h class ="UserButton"  style={{ color: 'white' }}>hours</h>
-                   <p class ="UserButton"  style={{ color: 'white' }}>Average Stay Time</p></h1>
+                   <p style={{ color: 'white',fontSize:'30px' }}>{graph.userstat.staytime}  <h class ="UserButton"  style={{ color: 'white' }}>hours</h>
+                   <p class ="UserButton"  style={{ color: 'white' }}>Average Stay Time</p></p>
                    <WhiteSpace size ="xs"/>
                    </Button>
                    
                    <Button type="primary" className = "UserButtonOrange1" inline style={{marginLeft: '10px',marginRight :'10px' }}>
-                   <h1 style={{ color: 'black' }}>{graph.userstat.calories} <h class ="UserButton" style={{ color: 'black' }}>kcal</h><br></br>
-                   <p class ="UserButton" style={{ color: 'black' }}>Total calories burned</p></h1>
+                   <p style={{ color: 'black' ,fontSize:'30px' }}>{graph.userstat.calories} <h class ="UserButton" style={{ color: 'black' }}>kcal</h><br></br>
+                   <p class ="UserButton" style={{ color: 'black'  }}>Total calories burned</p></p>
                    </Button>
                    
               {/* use `am-button-borderfix`. because Multiple buttons inline arranged, the last one border-right may not display */}
                 <WhiteSpace size ="xs"/>
                 <WhiteSpace size ="xs"/>
                 <Button type="primary" className = "UserButtonOrange2" inline style={{ marginLeft: '80px' }}>
-                  <h1 style={{ color: 'black' }}>{graph.userstat.mosttrain}<br></br>
-                  <p class ="UserButton" style={{ color: 'black' }}>Most trained part</p></h1>
+                  <p style={{ color: 'black',fontSize:'30px'  }}>{graph.userstat.mosttrain}<br></br>
+                  <p class ="UserButton" style={{ color: 'black' }}>Most trained part</p></p>
                 </Button>
                 {/* use `am-button-borderfix`. because Multiple buttons inline arranged, the last one border-right may not display */}
                 <Button type="primary" className = "UserButtonRed2"  inline style={{ marginLeft: '10px',marginRight :'10px' }}>
-                  <h1 style={{ color: 'white' }}>{graph.userstat.leasttrain} <br></br>
-                  <p class ="UserButton" style={{ color: 'white' }}>Least trained part</p></h1>
+                  <p style={{ color: 'white' ,fontSize:'30px' }}>{graph.userstat.leasttrain} <br></br>
+                  <p class ="UserButton" style={{ color: 'white' }}>Least trained part</p></p>
                 </Button>
                 <WhiteSpace size ="xs"/>
                 <br></br> 
@@ -207,7 +209,14 @@ class UserStat extends Component {
             
                 <ReactFC {...chartConfigs } className ="UserGraph" />
                 <br></br>
-                  <ReactFC {...caloriesConfigs } className ="UserGraph" />
+                <ReactFC {...caloriesConfigs } className ="UserGraph" />
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            
 
   
             </div>

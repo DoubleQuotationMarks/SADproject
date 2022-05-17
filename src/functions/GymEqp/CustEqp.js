@@ -110,25 +110,42 @@ class CustomerEquipment extends Component {
     render() { 
     
         return (
-            <div >
+            <div class="shapeGymequip ">
+                 
+                 <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
             <p class ="CustTittle">{Gymname1}</p>   
             <br></br>
            {this.state.equip.map( ( equipData )  =>(
            <div  >
                <WingBlank size="sm">
                 <WhiteSpace size="sm" />                
-            <Accordion  defaultActiveKey="0" className="my-accordion" onChange={this.onChange}    >
-            <Accordion.Panel header= {equipData.workout} >
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} >
            
-            {equipData.equipment.map((barang ) => (
+          
+            <Accordion.Panel header= {equipData.workout}    >
+           
+          
+           {equipData.equipment.map((barang ) => (
+              
 
-                <Item arrow="empty"  extra={barang.people} id ={barang.equipmentId} >
-                 <Badge  dot   style={{ marginLeft: 30, marginTop :10 ,backgroundColor: '#21b68a', borderRadius: 40 }}>{barang.equipmentName}</Badge>
-                <Brief></Brief>
-                </Item>
-
-            ))}
-            </Accordion.Panel>
+               <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+                   <div>{barang.equipmentName}
+                   {barang.people <= 5 ? (
+                     <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                   ) :(
+                     <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                   )}       
+               
+                   </div>
+                
+               </Item>
+  
+           ))}
+           </Accordion.Panel>
+           
+          
+       
+         
             </Accordion>
             <WhiteSpace size="sm" />
             </WingBlank>

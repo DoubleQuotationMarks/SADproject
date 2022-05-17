@@ -73,13 +73,12 @@ class GymList extends Component {
 //} ;
 
     render() { 
-       
-
-
-        
+              
         return (
              
             <div class ="shapeGymList">
+                   
+                <Button href="/" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
                 <h1 class ="GymTitle"> Gym List</h1>
                 {this.state.Gym.map((GymData) => (
                                 <div>
@@ -91,14 +90,14 @@ class GymList extends Component {
                                     <Brief>{GymData.address}</Brief>
                                     </Item> */}
 
-                                        <Button  className = "UserLink"  href={"gymequip/"+GymData.GymName}    arrow="horizontal" extra={<Badge  dot   style={{ marginLeft: 30, marginTop :10 ,backgroundColor: '#21b68a', borderRadius: 40 }}>20</Badge>}  >
+                                        <Button  className = "UserLink"  href={"gymequip/"+GymData.GymName}  >
                                         {GymData.capacity <= 20 ?
-                                        (  <div class="circleStat " style ={{ backgroundColor: "green"} }></div>) 
-                                        :( <div class="circleStat " style ={{ backgroundColor: "red"} }></div> )}
+                                        (  <div class="circleStat " style ={{ backgroundColor: "#57FF89"} }></div>) 
+                                        :( <div class="circleStat " style ={{ backgroundColor: "#FF6164"} }></div> )}
 
                                         {GymData.capacity <= 20 ?
-                                        (  <p class ="buttontext2  "style ={{ color: "green"} }>comfort </p>) 
-                                        :( <p class ="buttontext2 " style ={{ color:"red"} }>crowded </p> )}   
+                                        (  <p class ="buttontext2  "style ={{ color: "#57FF89"} }>comfort </p>) 
+                                        :( <p class ="buttontext2 " style ={{ color:"#FF6164"} }>crowded </p> )}   
 
                                         <p class = "buttontext">{GymData.GymName}
                                   

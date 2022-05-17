@@ -9,7 +9,7 @@ const tabs = [{
   icon: faUserCircle,
   label: "User"
 },{
-  route: "/home",
+  route: "/",
   icon: faHome,
   label: "Home"
 },{

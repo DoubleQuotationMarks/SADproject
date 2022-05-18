@@ -39,10 +39,10 @@ class CustomerEquipment extends Component {
       //    console.log(res.data)
       //    this.setState({equip :res.data})
       //  })
-      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/gym/machine?gym_id=branch-1000001&sorted_by=category').then( 
+      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/gym/machine/category/branch-1000001').then( 
         (response) => {
+          console.log(response)
           console.log(response.data.data)
-          console.log(Object.getOwnPropertyNames(response.data))
            this.setState({ EQUIP:response.data.data})
         
         })
@@ -58,26 +58,25 @@ class CustomerEquipment extends Component {
         return (
             <div style={{backgroundColor: "#FFF3D4" }}>
                  
-            <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
+            <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px" }}>Back</Button>
             <p class ="CustTittle">{Gymname1}</p>   
             <br></br>
-            {/* <p>{EQUIP}</p> */}
-            {/* {this.state.EQUIP.map((data) => (
-              <div>{data}</div>
-            ))} */}
-           {/* {this.state.equip.map( ( equipData )  =>(  
-           <div  >
+        
+           {this.state.EQUIP.map( ( equipData )  =>(  
+           <div >
             <WingBlank size="sm">
             <WhiteSpace size="sm" />                
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} >
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
            
-          {Object.getOwnPropertyNames(equipData) == 'abs' ? 
+          {equipData.category == 'abs'  && equipData.machines ? 
             <Accordion.Panel header= {  
-            <div style ={{backgroundColor:"#46B862"}}>
-            <img src={abs} style= {{marginLeft : "30px" }}/>
+            <div style ={{backgroundColor:"#46B862" }}>
+            <img src={abs} style= {{marginLeft : "30px"}}/>
             </div>} >
-                      {equipData.equipment.map((barang ) => (
-                          <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+              <div style ={{backgroundColor:"#FFF3D4"}}>
+                      {equipData.machines.map((barang ) => (
+                          <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}style ={{marginLeft:'15px'}} >
+                         
                               <div>{barang.equipmentName}
                               {barang.people <= 5 ? (
                                 <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -85,17 +84,20 @@ class CustomerEquipment extends Component {
                                 <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                               )}       
                               </div>
+                            
                           </Item>
                       ))}
+                      </div>
             </Accordion.Panel>
-            : Object.getOwnPropertyNames(equipData) == 'arm'?
+            : equipData.category == 'arm' && equipData.machines?
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#FAA61A"}}>
               <img src={arm} style= {{marginLeft : "30px" }}/>
               </div>}
                >
-            {equipData.equipment.map((barang ) => (
-                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
+            <div style ={{backgroundColor:"#FFF3D4"}}>
+            {equipData.machines.map((barang ) => (
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
                     <div>{barang.equipmentName}
                     {barang.people <= 5 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -105,15 +107,17 @@ class CustomerEquipment extends Component {
                     </div>
                 </Item>
             ))}
+            </div>
             </Accordion.Panel>
-            : Object.getOwnPropertyNames(equipData) == 'back' ?
+            : equipData.category == 'back' && equipData.machines?
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#F5D19B"}}>
               <img src={back} style= {{marginLeft : "30px" }}/>
               </div>} >
-            {equipData.equipment.map((barang ) => (
-                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
-                    <div>{barang.equipmentName}
+              <div style ={{backgroundColor:"#FFF3D4"}}>
+            {equipData.machines.map((barang ) => (
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  style ={{marginLeft:'15px'}}>
+                    <div>{barang.name}
                     {barang.people <= 5 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
@@ -122,16 +126,18 @@ class CustomerEquipment extends Component {
                     </div>
                 </Item>
             ))}
+            </div>
             </Accordion.Panel>
-            : Object.getOwnPropertyNames(equipData) == 'cardio' ?
+            : equipData.category == 'cardio'&& equipData.machines ?
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#DE5D4D"}}>
               <img src={cardio} style= {{marginLeft : "30px" }}/>
               </div>
             }>
-            {equipData.equipment.map((barang ) => (
-                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
-                    <div>{barang.equipmentName}
+              <div style ={{backgroundColor:"#FFF3D4"}}>
+            {equipData.machines.map((barang ) => (
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
+                    <div>{barang.name}
                     {barang.people <= 5 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
@@ -140,16 +146,18 @@ class CustomerEquipment extends Component {
                     </div>
                 </Item>
             ))}
+            </div>
             </Accordion.Panel>
-            : Object.getOwnPropertyNames(equipData) == "chest" ?
+            : equipData.category == "chest" && equipData.machines?
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#3B5998"}}>
               <img src={chest} style= {{marginLeft : "30px" }}/>
               </div>
             }>
-            {equipData.equipment.map((barang ) => (
-                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
-                    <div>{barang.equipmentName}
+              <div style ={{backgroundColor:"#FFF3D4"}}>
+            {equipData.machines.map((barang ) => (
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
+                    <div>{barang.name}
                     {barang.people <= 5 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
@@ -158,16 +166,18 @@ class CustomerEquipment extends Component {
                     </div>
                 </Item>
             ))}
+            </div>
             </Accordion.Panel>
-          : Object.getOwnPropertyNames(equipData) == "hips" ?
+          : equipData.category == "hips" && equipData.machines?
           <Accordion.Panel header= {
             <div style ={{backgroundColor:"#ADADAD"}}>
             <img src={hips} style= {{marginLeft : "30px" }}/>
             </div>
           }>
-          {equipData.equipment.map((barang ) => (
-              <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
-                  <div>{barang.equipmentName}
+            <div style ={{backgroundColor:"#FFF3D4"}}>
+          {equipData.machines.map((barang ) => (
+              <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
+                  <div>{barang.name}
                   {barang.people <= 5 ? (
                     <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                   ) :(
@@ -176,16 +186,18 @@ class CustomerEquipment extends Component {
                   </div>
               </Item>
           ))}
+          </div>
           </Accordion.Panel>
-            :
+            :equipData.category == "leg" && equipData.machines?
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#8E78FF"}}>
               <img src={leg} style= {{marginLeft : "30px" }}/>
               </div>
             }>
-            {equipData.equipment.map((barang ) => (
-                <Item arrow="none"  extra={barang.people+'ppl'} id ={barang.equipmentId} >
-                    <div>{barang.equipmentName}
+              <div style ={{backgroundColor:"#FFF3D4"}}>
+            {equipData.machines.map((barang ) => (
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  style ={{marginLeft:'15px'}}>
+                    <div>{barang.name}
                     {barang.people <= 5 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
@@ -194,14 +206,17 @@ class CustomerEquipment extends Component {
                     </div>
                 </Item>
             ))}
+            </div>
             </Accordion.Panel>
+            :
+              <div></div>
           }
-
+           
             </Accordion>
             <WhiteSpace size="sm" />
             </WingBlank>
-            
-        </div>) )} */}
+           
+        </div>) )}
         <br></br>
         <br></br>
         <br></br>

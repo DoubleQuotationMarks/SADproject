@@ -56,7 +56,7 @@ class CustomerEquipment extends Component {
     render() { 
   
         return (
-            <div style={{backgroundColor: "#FFF3D4" }}>
+            <div style={{backgroundColor: "#FFF3D4" ,height :'9000px'}}>
                  
             <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px" }}>Back</Button>
             <p class ="CustTittle">{Gymname1}</p>   
@@ -65,10 +65,12 @@ class CustomerEquipment extends Component {
            {this.state.EQUIP.map( ( equipData )  =>(  
            <div >
             <WingBlank size="sm">
-            <WhiteSpace size="sm" />                
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
+            <WhiteSpace size="sm" />
+                 
+         
            
           {equipData.category == 'abs'  && equipData.machines ? 
+             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
             <Accordion.Panel header= {  
             <div style ={{backgroundColor:"#46B862" }}>
             <img src={abs} style= {{marginLeft : "30px"}}/>
@@ -89,7 +91,9 @@ class CustomerEquipment extends Component {
                       ))}
                       </div>
             </Accordion.Panel>
+            </Accordion>
             : equipData.category == 'arm' && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#FAA61A"}}>
               <img src={arm} style= {{marginLeft : "30px" }}/>
@@ -109,7 +113,9 @@ class CustomerEquipment extends Component {
             ))}
             </div>
             </Accordion.Panel>
+            </Accordion>
             : equipData.category == 'back' && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#F5D19B"}}>
               <img src={back} style= {{marginLeft : "30px" }}/>
@@ -128,7 +134,9 @@ class CustomerEquipment extends Component {
             ))}
             </div>
             </Accordion.Panel>
+            </Accordion>
             : equipData.category == 'cardio'&& equipData.machines ?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#DE5D4D"}}>
               <img src={cardio} style= {{marginLeft : "30px" }}/>
@@ -148,7 +156,9 @@ class CustomerEquipment extends Component {
             ))}
             </div>
             </Accordion.Panel>
+            </Accordion>
             : equipData.category == "chest" && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#3B5998"}}>
               <img src={chest} style= {{marginLeft : "30px" }}/>
@@ -168,7 +178,9 @@ class CustomerEquipment extends Component {
             ))}
             </div>
             </Accordion.Panel>
+            </Accordion>
           : equipData.category == "hips" && equipData.machines?
+          <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
           <Accordion.Panel header= {
             <div style ={{backgroundColor:"#ADADAD"}}>
             <img src={hips} style= {{marginLeft : "30px" }}/>
@@ -188,7 +200,9 @@ class CustomerEquipment extends Component {
           ))}
           </div>
           </Accordion.Panel>
+          </Accordion>
             :equipData.category == "leg" && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
             <Accordion.Panel header= {
               <div style ={{backgroundColor:"#8E78FF"}}>
               <img src={leg} style= {{marginLeft : "30px" }}/>
@@ -208,11 +222,12 @@ class CustomerEquipment extends Component {
             ))}
             </div>
             </Accordion.Panel>
+            </Accordion>
             :
               <div></div>
           }
            
-            </Accordion>
+     
             <WhiteSpace size="sm" />
             </WingBlank>
            

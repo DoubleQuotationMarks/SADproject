@@ -98,11 +98,11 @@ class GymList extends Component {
                             </Item> */}
 
                                 <Button  className = "UserLink"  href={"gymequip/"+GymData.name}  >
-                                {GymData.status == 'uncrowed' ?
+                                {GymData.status == 'uncrowded' ?
                                 (  <div class="circleStat " style ={{ backgroundColor: "#57FF89"} }></div>) 
                                 :( <div class="circleStat " style ={{ backgroundColor: "#FF6164"} }></div> )}
 
-                                {GymData.status == "uncrowed" ?
+                                {GymData.status == "uncrowded" ?
                                 (  <p class ="buttontext2  "style ={{ color: "#57FF89"} }>comfort </p>) 
                                 :( <p class ="buttontext2 " style ={{ color:"#FF6164"} }>crowded </p> )}   
 

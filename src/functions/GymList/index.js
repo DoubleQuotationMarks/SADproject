@@ -97,12 +97,12 @@ class GymList extends Component {
                             <Brief>{GymData.address}</Brief>
                             </Item> */}
 
-                                <Button  className = "UserLink"  href={"gymequip/"+GymData.name}  >
-                                {GymData.status == 'uncrowded' ?
+                                <Button  className = "UserLink"  href={"gymlist/"+GymData.name+'_'+GymData.branch_gym_id}  >
+                                {GymData.status === 'uncrowded' ?
                                 (  <div class="circleStat " style ={{ backgroundColor: "#57FF89"} }></div>) 
                                 :( <div class="circleStat " style ={{ backgroundColor: "#FF6164"} }></div> )}
 
-                                {GymData.status == "uncrowded" ?
+                                {GymData.status === "uncrowded" ?
                                 (  <p class ="buttontext2  "style ={{ color: "#57FF89"} }>comfort </p>) 
                                 :( <p class ="buttontext2 " style ={{ color:"#FF6164"} }>crowded </p> )}   
 

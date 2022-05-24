@@ -2,14 +2,7 @@ import React, { Component} from 'react';
 import { Accordion, List  } from 'antd-mobile';
 import { ActionSheet, WhiteSpace, WingBlank , Badge ,Toast ,Button, Modal } from 'antd-mobile';
 import "./CustEqp.less"
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams
-  } from "react-router-dom";
-  import { withRouter } from "react-router";
-  import axios from 'axios'
+import axios from 'axios'
 import abs from "./abs.png"
 import arm from './arm.png'
 import back from './back.png'
@@ -21,7 +14,10 @@ import leg from './leg.png'
 const Item = List.Item;
 const Brief = Item.Brief;
      let Gymname = window.location.pathname
-         let Gymname1 = Gymname.replace('/gymequip/','')
+     let Gymname1 = Gymname.replace('/gymlist/','')
+     let Gymname2 =Gymname1.split('_')
+
+
 
 // const api = axios.create({
 //     baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/'+Gymname1
@@ -39,7 +35,7 @@ class CustomerEquipment extends Component {
       //    console.log(res.data)
       //    this.setState({equip :res.data})
       //  })
-      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/gym/machine/category/branch-1000001').then( 
+      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/gym/machine/category/'+Gymname2[1]).then( 
         (response) => {
           console.log(response)
           console.log(response.data.data)
@@ -49,6 +45,7 @@ class CustomerEquipment extends Component {
         .catch(function(error) {
           console.log(error);
         })
+   
 
      }
 
@@ -59,7 +56,7 @@ class CustomerEquipment extends Component {
             <div style={{backgroundColor: "#FFF3D4" ,position:'fixed',width: '100%',height: '100%'}}>
                  
             <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px" ,backgroundColor:'#FFF3D4'}}>Back</Button>
-            <p class ="CustTittle">{Gymname1}</p>   
+            <p class ="CustTittle">{Gymname2[0]}</p>   
             <br></br>
         
            {this.state.EQUIP.map( ( equipData )  =>(  
@@ -69,7 +66,7 @@ class CustomerEquipment extends Component {
                  
          
            
-          {equipData.category == 'back'  && equipData.machines ? 
+          {equipData.category === 'back'  && equipData.machines ? 
              <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#46B862"}} >
              <Accordion.Panel header= {  
             <img src={back}  style= {{marginLeft : "30px"}}/>} >
@@ -91,7 +88,7 @@ class CustomerEquipment extends Component {
             </Accordion.Panel>
        
             </Accordion>
-            : equipData.category == 'chest' && equipData.machines?
+            : equipData.category === 'chest' && equipData.machines?
             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#FAA61A"}} >
             <Accordion.Panel header= {
               <img src={chest} style= {{marginLeft : "30px" }}/>
@@ -111,7 +108,7 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-            : equipData.category == 'cardio' && equipData.machines?
+            : equipData.category === 'cardio' && equipData.machines?
             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#F5D19B"}} >
             <Accordion.Panel header= {
               <img src={cardio} style= {{marginLeft : "30px" }}/>
@@ -131,7 +128,7 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-            : equipData.category == 'abs'&& equipData.machines ?
+            : equipData.category === 'abs'&& equipData.machines ?
             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#DE5D4D"}} >
             <Accordion.Panel header= {
               <img src={abs} style= {{marginLeft : "30px" }}/>
@@ -151,7 +148,7 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-            : equipData.category == "leg" && equipData.machines?
+            : equipData.category === "leg" && equipData.machines?
             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#3B5998"}} >
             <Accordion.Panel header= {
               <img src={leg} style= {{marginLeft : "30px" }}/>
@@ -171,7 +168,7 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-          : equipData.category == "arm" && equipData.machines?
+          : equipData.category === "arm" && equipData.machines?
           <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#ADADAD"}} >
           <Accordion.Panel header= {
             <img src={arm} style= {{marginLeft : "30px" }}/>
@@ -191,7 +188,7 @@ class CustomerEquipment extends Component {
           </div>
           </Accordion.Panel>
           </Accordion>
-            :equipData.category == "hips" && equipData.machines?
+            :equipData.category === "hips" && equipData.machines?
             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  style ={{backgroundColor:"#8E78FF"}} >
             <Accordion.Panel header= {
           <img src={hips} style= {{marginLeft : "30px" }}/>

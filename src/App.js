@@ -149,7 +149,7 @@ const RouterList = () => (
                         <Route exact path="/" component={LoadableHomePage}/>
                         <Route exact path={"/userstat"} component={LoadableUserStat}/>
                         <Route exact path="/gymlist" component={LoadableUserGymList}/>
-                        <Route exact path="/gymequip/:id" component={LoadableUserGymEquip}/>
+                        <Route exact path="/gymlist/:id" component={LoadableUserGymEquip}/>
                         </div>        
 					</Switch>
 	</Router>

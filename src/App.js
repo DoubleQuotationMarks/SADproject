@@ -1,12 +1,10 @@
 import React from 'react'
 import {BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom'//导入的方式跟之前有点变化
 // import Bundle from './components/Bundle'
-
 import { observable } from 'mobx';
 import { Provider } from 'mobx-react';
-
 import Loadable from 'react-loadable'
-
+import Navigation from './functions/NavBar/Navigation'
 // import Tabs from './functions/Index/Tabs'
 // import ArticleDetail from './functions/ArticleDetail'
 // import BookDetail from './functions/BookDetail'
@@ -86,6 +84,29 @@ const LoadableBookDetail= Loadable({
 	delay: 300
 });
 
+const LoadableHomePage= Loadable({
+    loader: () => import('./functions/UserHome/userHome'),
+      loading: Loading,
+      delay: 0
+  });
+
+  const LoadableUserGymList= Loadable({
+    loader: () => import('./functions/GymList/index'),
+      loading: Loading,
+      delay: 0
+  });
+
+  const LoadableUserGymEquip= Loadable({
+    loader: () => import('./functions/GymEqp/CustEqp'),
+      loading: Loading,
+      delay: 0
+  });
+  const LoadableUserStat= Loadable({
+    loader: () => import('./functions/userStatistic/userStat'),
+      loading: Loading,
+      delay: 0
+  });
+
 // const Tabs = (props) => (
 // 	<Bundle load={ () => import('./functions/Index/Tabs')}>
 // 		{ (Tabs) => <Tabs {...props} /> }
@@ -117,17 +138,20 @@ const LoadableBookDetail= Loadable({
 //     </Router>
 // )
 
+
 // 运用react-loading 进行划分
 const RouterList = () => (
 	<Router>
-			<div>
 					<Switch>
-						<Route exact path="/" component={LoadableTabs}/>
-						<Route exact path="/post/:id" component={LoadableArticleDetail}/>
-						<Route exact path="/book/:id" component={LoadableBookDetail}/>
-						<Route exact path="/Lists" component={List}/>
+            
+                        <div>
+                        <Navigation />
+                        <Route exact path="/" component={LoadableHomePage}/>
+                        <Route exact path={"/userstat"} component={LoadableUserStat}/>
+                        <Route exact path="/gymlist" component={LoadableUserGymList}/>
+                        <Route exact path="/gymlist/:id" component={LoadableUserGymEquip}/>
+                        </div>        
 					</Switch>
-			</div>
 	</Router>
 )
 

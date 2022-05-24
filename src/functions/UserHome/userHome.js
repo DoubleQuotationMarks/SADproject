@@ -4,17 +4,17 @@ import {  Card, WhiteSpace, WingBlank,Button ,Accordion ,NavBar, Icon} from 'ant
 import './UserHome.less'
 import getUrlQuery from '../../utils/getUrlQuery'
 import axios from 'axios'
+
 const Item = List.Item;
 const Brief = Item.Brief;
 
 
 //import asdsd from "../GymList/index"
+let userid = window.location.pathname
+let userid1 = userid.replace('/','')
+console.log(userid1)
+//use userid1 to get user 
 
-
-
-// const api = axios.create({
-//   baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/userhome'
-// })
 
 class UserHome extends Component {
 
@@ -35,7 +35,7 @@ class UserHome extends Component {
       //   })
        
       //  })
-      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/reservation/meowmeow123').then( 
+      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/reservation/'+userid1).then( 
         (response) => {console.log(response)
         this.setState({reservation:response.data.data
 
@@ -75,8 +75,9 @@ class UserHome extends Component {
 
     render() { 
         return (
-          
+    
         <div class = "shapeHome" style={{  height: '926px'}}>
+           
          <h1 className ="HomeTitle">Home</h1>
       <WingBlank size="large">
         <WhiteSpace size="xs" />

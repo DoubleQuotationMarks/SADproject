@@ -143,13 +143,13 @@ const LoadableHomePage= Loadable({
 const RouterList = () => (
 	<Router>
 					<Switch>
-            
+
                         <div>
                         <Navigation />
-                        <Route exact path="/" component={LoadableHomePage}/>
+                        <Route exact path="/:userid" component={LoadableHomePage}/>
                         <Route exact path={"/userstat"} component={LoadableUserStat}/>
                         <Route exact path="/gymlist" component={LoadableUserGymList}/>
-                        <Route exact path="/gymlist/:id" component={LoadableUserGymEquip}/>
+                        <Route exact path="/gymlist/:branch_id" component={LoadableUserGymEquip}/>
                         </div>        
 					</Switch>
 	</Router>

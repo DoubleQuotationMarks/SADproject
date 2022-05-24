@@ -12,29 +12,36 @@ const Brief = Item.Brief;
 
 
 
-const api = axios.create({
-  baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/userhome'
-})
+// const api = axios.create({
+//   baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/userhome'
+// })
 
 class UserHome extends Component {
 
 
   
       state = {
-        reservation:[],
-          conversation:[]
+        reservation:[]
+        
       }
 
      constructor(){
        super();
-       api.get('/').then(res =>{
-        console.log(res.data)
-         this.setState({
-           reservation :res.data,
+      //  api.get('/').then(res =>{
+      //   console.log(res.data)
+      //    this.setState({
+      //      reservation :res.data,
+
+      //   })
+       
+      //  })
+      axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/reservation/meowmeow123').then( 
+        (response) => {console.log(response)
+        this.setState({reservation:response.data.data
 
         })
-       
-       })
+        
+  })
      }
   // data = { 
   //   reservation : [{
@@ -87,10 +94,10 @@ class UserHome extends Component {
           <WhiteSpace size="lg" />
           <Card>
             <Card.Header
-              title={reservationData.activity}
-              extra={reservationData.date + '  ' + reservationData.detail.time}
+              title={reservationData.category}
+              extra={reservationData.machine_id}
             />
-            <Card.Footer content={reservationData.detail.machine} extra={reservationData.detail.Gym } />
+            <Card.Footer content={new Date(reservationData.date).toDateString()}  extra={reservationData.gym_name} />
           </Card>
         </WingBlank>
          

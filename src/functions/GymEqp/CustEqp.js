@@ -56,9 +56,9 @@ class CustomerEquipment extends Component {
     render() { 
   
         return (
-            <div style={{backgroundColor: "#FFF3D4" ,height :'9000px'}}>
+            <div style={{backgroundColor: "#FFF3D4" ,position:'fixed',width: '100%',height: '100%'}}>
                  
-            <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px" }}>Back</Button>
+            <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px" ,backgroundColor:'#FFF3D4'}}>Back</Button>
             <p class ="CustTittle">{Gymname1}</p>   
             <br></br>
         
@@ -69,18 +69,16 @@ class CustomerEquipment extends Component {
                  
          
            
-          {equipData.category == 'abs'  && equipData.machines ? 
-             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
-            <Accordion.Panel header= {  
-            <div style ={{backgroundColor:"#46B862" }}>
-            <img src={abs} style= {{marginLeft : "30px"}}/>
-            </div>} >
+          {equipData.category == 'back'  && equipData.machines ? 
+             <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#46B862"}} >
+             <Accordion.Panel header= {  
+            <img src={back}  style= {{marginLeft : "30px"}}/>} >
               <div style ={{backgroundColor:"#FFF3D4"}}>
                       {equipData.machines.map((barang ) => (
-                          <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}style ={{marginLeft:'15px'}} >
+                          <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} >
                          
-                              <div>{barang.equipmentName}
-                              {barang.people <= 5 ? (
+                              <div>{barang.name}
+                              {barang.waiting_ppl <= 4 ? (
                                 <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                               ) :(
                                 <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -91,40 +89,18 @@ class CustomerEquipment extends Component {
                       ))}
                       </div>
             </Accordion.Panel>
+       
             </Accordion>
-            : equipData.category == 'arm' && equipData.machines?
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
+            : equipData.category == 'chest' && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#FAA61A"}} >
             <Accordion.Panel header= {
-              <div style ={{backgroundColor:"#FAA61A"}}>
-              <img src={arm} style= {{marginLeft : "30px" }}/>
-              </div>}
-               >
+              <img src={chest} style= {{marginLeft : "30px" }}/>
+              } >
             <div style ={{backgroundColor:"#FFF3D4"}}>
             {equipData.machines.map((barang ) => (
-                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
-                    <div>{barang.equipmentName}
-                    {barang.people <= 5 ? (
-                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
-                    ) :(
-                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
-                    )}       
-                    </div>
-                </Item>
-            ))}
-            </div>
-            </Accordion.Panel>
-            </Accordion>
-            : equipData.category == 'back' && equipData.machines?
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
-            <Accordion.Panel header= {
-              <div style ={{backgroundColor:"#F5D19B"}}>
-              <img src={back} style= {{marginLeft : "30px" }}/>
-              </div>} >
-              <div style ={{backgroundColor:"#FFF3D4"}}>
-            {equipData.machines.map((barang ) => (
-                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  style ={{marginLeft:'15px'}}>
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  >
                     <div>{barang.name}
-                    {barang.people <= 5 ? (
+                    {barang.waiting_ppl <= 4 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
                       <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -135,18 +111,16 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-            : equipData.category == 'cardio'&& equipData.machines ?
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
+            : equipData.category == 'cardio' && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#F5D19B"}} >
             <Accordion.Panel header= {
-              <div style ={{backgroundColor:"#DE5D4D"}}>
               <img src={cardio} style= {{marginLeft : "30px" }}/>
-              </div>
-            }>
+              } >
               <div style ={{backgroundColor:"#FFF3D4"}}>
             {equipData.machines.map((barang ) => (
-                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} >
                     <div>{barang.name}
-                    {barang.people <= 5 ? (
+                    {barang.waiting_ppl <= 4 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
                       <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -157,18 +131,16 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-            : equipData.category == "chest" && equipData.machines?
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
+            : equipData.category == 'abs'&& equipData.machines ?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#DE5D4D"}} >
             <Accordion.Panel header= {
-              <div style ={{backgroundColor:"#3B5998"}}>
-              <img src={chest} style= {{marginLeft : "30px" }}/>
-              </div>
+              <img src={abs} style= {{marginLeft : "30px" }}/>
             }>
               <div style ={{backgroundColor:"#FFF3D4"}}>
             {equipData.machines.map((barang ) => (
-                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  >
                     <div>{barang.name}
-                    {barang.people <= 5 ? (
+                    {barang.waiting_ppl <= 4 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
                       <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -179,18 +151,36 @@ class CustomerEquipment extends Component {
             </div>
             </Accordion.Panel>
             </Accordion>
-          : equipData.category == "hips" && equipData.machines?
-          <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
-          <Accordion.Panel header= {
-            <div style ={{backgroundColor:"#ADADAD"}}>
-            <img src={hips} style= {{marginLeft : "30px" }}/>
+            : equipData.category == "leg" && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#3B5998"}} >
+            <Accordion.Panel header= {
+              <img src={leg} style= {{marginLeft : "30px" }}/>
+            }>
+              <div style ={{backgroundColor:"#FFF3D4"}}>
+            {equipData.machines.map((barang ) => (
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  >
+                    <div>{barang.name}
+                    {barang.waiting_ppl <= 4 ? (
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    ) :(
+                      <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
+                    )}       
+                    </div>
+                </Item>
+            ))}
             </div>
+            </Accordion.Panel>
+            </Accordion>
+          : equipData.category == "arm" && equipData.machines?
+          <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange} style ={{backgroundColor:"#ADADAD"}} >
+          <Accordion.Panel header= {
+            <img src={arm} style= {{marginLeft : "30px" }}/>
           }>
             <div style ={{backgroundColor:"#FFF3D4"}}>
           {equipData.machines.map((barang ) => (
-              <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} style ={{marginLeft:'15px'}} >
+              <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id} >
                   <div>{barang.name}
-                  {barang.people <= 5 ? (
+                  {barang.waiting_ppl<= 4 ? (
                     <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                   ) :(
                     <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>
@@ -201,18 +191,17 @@ class CustomerEquipment extends Component {
           </div>
           </Accordion.Panel>
           </Accordion>
-            :equipData.category == "leg" && equipData.machines?
-            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  >
+            :equipData.category == "hips" && equipData.machines?
+            <Accordion  defaultActiveKey="1" className="my-accordion" onChange={this.onChange}  style ={{backgroundColor:"#8E78FF"}} >
             <Accordion.Panel header= {
-              <div style ={{backgroundColor:"#8E78FF"}}>
-              <img src={leg} style= {{marginLeft : "30px" }}/>
-              </div>
+          <img src={hips} style= {{marginLeft : "30px" }}/>
+
             }>
               <div style ={{backgroundColor:"#FFF3D4"}}>
             {equipData.machines.map((barang ) => (
-                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  style ={{marginLeft:'15px'}}>
+                <Item arrow="none"  extra={barang.waiting_ppl+'ppl'} id ={barang.machine_id}  >
                     <div>{barang.name}
-                    {barang.people <= 5 ? (
+                    {barang.waiting_ppl <= 4 ? (
                       <div class="circleEquipStat " style ={{ backgroundColor: "#57FF89" ,marginRight :'110px' ,marginTop:'10px'} }></div>
                     ) :(
                       <div class="circleEquipStat " style ={{ backgroundColor: "#FF6164" ,marginRight :'110px' ,marginTop:'10px'} }></div>

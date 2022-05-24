@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
 import { List } from 'antd-mobile'
-import {  WhiteSpace, WingBlank,Badge  ,Button} from 'antd-mobile';
+import {  WhiteSpace, WingBlank,Badge  ,Button, NoticeBar} from 'antd-mobile';
 import './gymList.less'
 import axios from 'axios'
 
@@ -107,8 +107,7 @@ class GymList extends Component {
                                 :( <p class ="buttontext2 " style ={{ color:"#FF6164"} }>crowded </p> )}   
 
                                 <p class = "buttontext">{GymData.name}
-                          
-                                <p class="buttonDescription"  >{GymData.address}</p> </p>
+                               <p class="buttonDescription" style={{ fontSize:'10px'}} >{GymData.address}</p> </p>
 
                           
             

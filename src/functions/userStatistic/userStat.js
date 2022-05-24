@@ -14,40 +14,56 @@ import axios from 'axios'
 
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
-const api = axios.create({
-  baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/barchart'
-})
+// const api = axios.create({
+//   baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/barchart'
+// })
 
 
 class UserStat extends Component {
     
   
   state = {
-    situation:[],
-    bar:[]
+    stay_time:[],
+    calories:[],
+    most_train:[],
+    least_train:[]
+
   }
 
        
 
           constructor(){
             super();
-            api.get('/').then(res =>{
-              console.log(res.data)
+            // api.get('/').then(res =>{
+            //   console.log(res.data)
+            //   this.setState({
+            //     situation:res.data,
+            //     bar:res.data.bar
+            //    })
+            // })
+            axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/stat/meowmeow123').then( 
+              (response) => {console.log(response.data.data)
               this.setState({
-                situation:res.data,
-                bar:res.data.bar
-               })
-         
+                stay_time:response.data.data.stay_time,
+                calories:response.data.data.calories,
+                most_train:response.data.data.most_train,
+                least_train:response.data.data.least_train
+
+              } )
               
-            })
+        })
        
           }
             
     
     render() { 
 
-
-
+      const{
+        stay_time,
+        calories,
+        most_train,
+        least_train
+      }=this.state;
       const chartData =   [
         {
         "label": "Monday",
@@ -175,16 +191,16 @@ class UserStat extends Component {
                  <Button href="/" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
                 <h1 class ="UserTittle">Statistic</h1>
                 <WhiteSpace size ="xs"/>
-             {this.state.situation.map((graph) => (
+             
                <div>
                    <Button type="primary"  className = "UserButtonRed1"  inline style={{ marginLeft: '80px' }} >
-                   <p style={{ color: 'white',fontSize:'30px' }}>{graph.userstat.staytime}  <h class ="UserButton"  style={{ color: 'white' }}>hours</h>
+                   <p style={{ color: 'white',fontSize:'30px' }}>{stay_time}  <h class ="UserButton"  style={{ color: 'white' }}>hours</h>
                    <p class ="UserButton"  style={{ color: 'white' }}>Average Stay Time</p></p>
                    <WhiteSpace size ="xs"/>
                    </Button>
                    
                    <Button type="primary" className = "UserButtonOrange1" inline style={{marginLeft: '10px',marginRight :'10px' }}>
-                   <p style={{ color: 'black' ,fontSize:'30px' }}>{graph.userstat.calories} <h class ="UserButton" style={{ color: 'black' }}>kcal</h><br></br>
+                   <p style={{ color: 'black' ,fontSize:'30px' }}>{calories} <h class ="UserButton" style={{ color: 'black' }}>kcal</h><br></br>
                    <p class ="UserButton" style={{ color: 'black'  }}>Total calories burned</p></p>
                    </Button>
                    
@@ -192,18 +208,18 @@ class UserStat extends Component {
                 <WhiteSpace size ="xs"/>
                 <WhiteSpace size ="xs"/>
                 <Button type="primary" className = "UserButtonOrange2" inline style={{ marginLeft: '80px' }}>
-                  <p style={{ color: 'black',fontSize:'30px'  }}>{graph.userstat.mosttrain}<br></br>
+                  <p style={{ color: 'black',fontSize:'30px'  }}>{most_train}<br></br>
                   <p class ="UserButton" style={{ color: 'black' }}>Most trained part</p></p>
                 </Button>
                 {/* use `am-button-borderfix`. because Multiple buttons inline arranged, the last one border-right may not display */}
                 <Button type="primary" className = "UserButtonRed2"  inline style={{ marginLeft: '10px',marginRight :'10px' }}>
-                  <p style={{ color: 'white' ,fontSize:'30px' }}>{graph.userstat.leasttrain} <br></br>
+                  <p style={{ color: 'white' ,fontSize:'30px' }}>{least_train} <br></br>
                   <p class ="UserButton" style={{ color: 'white' }}>Least trained part</p></p>
                 </Button>
                 <WhiteSpace size ="xs"/>
                 <br></br> 
                    </div>
-             ))}
+       
                 <br></br>
                 <br></br>
             

@@ -18,7 +18,7 @@ console.log(userid1)
 //use userid1 to get user 
 
 let tabs = [{
-  route: "/home",
+  route: "/profile/"+userid1,
   icon: faUserCircle,
   label: "User"
 },{
@@ -26,7 +26,7 @@ let tabs = [{
   icon: faHome,
   label: "Home"
 },{
-  route: "/login",
+  route: "/setting/"+userid1,
   icon: faGear,
   label: "Settings"
 }]

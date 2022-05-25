@@ -106,6 +106,16 @@ const LoadableHomePage= Loadable({
       loading: Loading,
       delay: 0
   });
+  const LoadableSetting= Loadable({
+    loader: () => import('./functions/SettingPage/setting'),
+      loading: Loading,
+      delay: 0
+  });
+  const LoadableProfile= Loadable({
+    loader: () => import('./functions/ProfilePage/profile'),
+      loading: Loading,
+      delay: 0
+  });
 
 // const Tabs = (props) => (
 // 	<Bundle load={ () => import('./functions/Index/Tabs')}>
@@ -143,7 +153,8 @@ const LoadableHomePage= Loadable({
 const RouterList = () => (
 	<Router>
 					<Switch>
-
+                        <Route exact path="/setting/:user" component={LoadableSetting}/>
+                        <Route exact path="/profile/:user" component={LoadableProfile}/>
                         <div>
                         {/* <Navigation /> */}
                         <Route exact path="/home/:user" component={LoadableHomePage}/>

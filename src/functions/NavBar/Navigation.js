@@ -7,7 +7,7 @@ import './Navigation.less'
 
 
 const tabs = [{
-  route: "/home",
+  route: "/profile",
   icon: faUserCircle,
   label: "User"
 },{
@@ -15,7 +15,7 @@ const tabs = [{
   icon: faHome,
   label: "Home"
 },{
-  route: "/login",
+  route: "/setting",
   icon: faGear,
   label: "Settings"
 }]

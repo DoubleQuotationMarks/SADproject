@@ -11,13 +11,33 @@ import Column2D from "fusioncharts/fusioncharts.charts";
 // Preparing the chart data
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import axios from 'axios'
-
+import { Nav, NavItem} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 ReactFC.fcRoot(FusionCharts, Column2D, FusionTheme);
 
 // const api = axios.create({
 //   baseURL:'https://628205b3ed9edf7bd87d009e.mockapi.io/barchart'
 // })
 
+let userid = window.location.pathname
+let userid1 = userid.replace('/userstat/','')
+console.log(userid1)
+
+let  tabs = [{
+  route: "/home",
+  icon: faUserCircle,
+  label: "User"
+},{
+  route: "/home/"+userid1,
+  icon: faHome,
+  label: "Home"
+},{
+  route: "/login",
+  icon: faGear,
+  label: "Settings"
+}]
 
 class UserStat extends Component {
     
@@ -41,7 +61,7 @@ class UserStat extends Component {
             //     bar:res.data.bar
             //    })
             // })
-            axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/stat/meowmeow123').then( 
+            axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/stat/'+userid1).then( 
               (response) => {console.log(response.data.data)
               this.setState({
                 stay_time:response.data.data.stay_time,
@@ -188,7 +208,7 @@ class UserStat extends Component {
         return (
             <div style={{backgroundColor: "#FFF3D4" }}>
                  
-                 <Button href="/" inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
+                 <Button href={"/home/"+userid1} inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
                 <h1 class ="UserTittle">Statistic</h1>
                 <WhiteSpace size ="xs"/>
              
@@ -233,7 +253,31 @@ class UserStat extends Component {
                 <br></br>
                 <br></br>
             
+                <div>
+    {/* Top Bar*/}
 
+   
+    {/* Bottom Tab Navigator*/}
+    <nav className="navbar fixed-bottom navbar-light w-10" inline style={{ height: '120px' , }}  role="navigation">
+      <Nav className="h-10"  >
+        <div className=" d-flex " >
+          {/* {flex-row justify-content-around} */}
+          {
+            tabs.map((tab, index) =>(
+              <NavItem key={`tab-${index}`}inline style={{ marginBottom :'50px' }}>
+                <NavLink to={tab.route} className="nav-link" activeClassName="active">
+                  <div className="row d-flex  justify-content-center ">
+                    <FontAwesomeIcon size="lg" icon={tab.icon}  />
+                    <div >{tab.label}</div>
+                  </div>
+                </NavLink>
+              </NavItem>
+            ))
+          }
+        </div>
+      </Nav>
+    </nav>
+  </div>
   
             </div>
 

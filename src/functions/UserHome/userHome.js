@@ -4,18 +4,32 @@ import {  Card, WhiteSpace, WingBlank,Button ,Accordion ,NavBar, Icon} from 'ant
 import './UserHome.less'
 import getUrlQuery from '../../utils/getUrlQuery'
 import axios from 'axios'
-
+import { Nav, NavItem} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 const Item = List.Item;
 const Brief = Item.Brief;
 
 
-//import asdsd from "../GymList/index"
 let userid = window.location.pathname
-let userid1 = userid.replace('/','')
+let userid1 = userid.replace('/home/','')
 console.log(userid1)
 //use userid1 to get user 
 
-
+let tabs = [{
+  route: "/home",
+  icon: faUserCircle,
+  label: "User"
+},{
+  route: "/home/"+userid1,
+  icon: faHome,
+  label: "Home"
+},{
+  route: "/login",
+  icon: faGear,
+  label: "Settings"
+}]
 class UserHome extends Component {
 
 
@@ -27,14 +41,7 @@ class UserHome extends Component {
 
      constructor(){
        super();
-      //  api.get('/').then(res =>{
-      //   console.log(res.data)
-      //    this.setState({
-      //      reservation :res.data,
 
-      //   })
-       
-      //  })
       axios.get('https://sadbackend-cyt.herokuapp.com/api/v1/user/reservation/'+userid1).then( 
         (response) => {console.log(response)
         this.setState({reservation:response.data.data
@@ -43,36 +50,7 @@ class UserHome extends Component {
         
   })
      }
-  // data = { 
-  //   reservation : [{
-  //                       "id": 1,
-  //                       "activity" : "running" ,
-  //                       "date":"4/3",
-  //                       "detail":[{
-  //                                       "time" :"2am" ,
-  //                                       "machine" :"treadmil_01",
-  //                                       "Gym" : "daan"
-  //                                   },
-                                
-                
-  //               ]},
-  //               {
-  //                 "id": 2,
-  //                 "activity" : "boxing" ,
-  //                 "date" :"3/2",
-  //                 "detail":[{
-  //                                 "time" :"2am" ,
-  //                                 "machine" :"treadmil_01",
-  //                                 "Gym" : "daan"
-  //                             },
-                          
-          
-  //         ]}
-
-              
-  //             ]} 
-
-
+  
     render() { 
         return (
     
@@ -100,28 +78,8 @@ class UserHome extends Component {
             />
             <Card.Footer content={new Date(reservationData.date).toDateString()}  extra={reservationData.gym_name} />
           </Card>
-        </WingBlank>
-         
-                {/* <WingBlank size="sm">
-                <WhiteSpace size="sm" />
-             
-            <Accordion defaultActiveKey="1"  onChange={this.onChange} >
-            <Accordion.Panel header= {reservationData.activity} >
-                <Item  multipleLine onClick={() => {}}    className = "AccodianBodyUser" >
-                <div>{reservationData.detail.machine}</div>
-                <Brief ></Brief>
-                </Item >
-        
-            </Accordion.Panel >
-            </Accordion>
-              
-            <WhiteSpace size="sm" />
-                                </WingBlank>
-
-          */}
-         
-         
-             
+        </WingBlank>       
+            
    
     </div>
            ) )}
@@ -134,13 +92,13 @@ class UserHome extends Component {
    <br></br>
    <br></br>     
    
-                  <Button  href="/gymlist" className = "UserButtonOrangeGymStatus"  inline style={{ marginLeft: '80px' }}  selected={this.state.selectedTab === 'home'}>
+                  <Button  href={"/gym/"+userid1} className = "UserButtonOrangeGymStatus"  inline style={{ marginLeft: '80px' }}  >
                   <p class ="UserButtonText">Gym Status</p>
                   <WhiteSpace />
                   </Button>
    
                 {/* use `am-button-borderfix`. because Multiple buttons inline arranged, the last one border-right may not display */}
-                <Button href="/userstat" className = "UserButtonOrangeStatistic" inline style={{marginLeft: '10px' }}>
+                <Button href={"/userstat/"+userid1} className = "UserButtonOrangeStatistic" inline style={{marginLeft: '10px' }}>
              
                   <p class ="UserButtonText">Statistic</p>
                 </Button>
@@ -156,7 +114,28 @@ class UserHome extends Component {
                   <p class ="UserButtonText">Others</p>
                 </Button>
                 <WhiteSpace />
-              
+                <div>  
+                {/* Bottom Tab Navigator*/}
+                <nav className="navbar fixed-bottom navbar-light w-10" inline style={{ height: '120px' , }}  role="navigation">
+                  <Nav className="h-10"  >
+                    <div className=" d-flex " >
+                      {/* {flex-row justify-content-around} */}
+                      {
+                        tabs.map((tab, index) =>(
+                          <NavItem key={`tab-${index}`}inline style={{ marginBottom :'50px' }}>
+                            <NavLink to={tab.route} className="nav-link" activeClassName="active">
+                              <div className="row d-flex  justify-content-center ">
+                                <FontAwesomeIcon size="lg" icon={tab.icon}  />
+                                <div >{tab.label}</div>
+                              </div>
+                            </NavLink>
+                          </NavItem>
+                        ))
+                      }
+                    </div>
+                  </Nav>
+                </nav>
+              </div>
         </div>
 
         

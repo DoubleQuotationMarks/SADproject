@@ -25,8 +25,8 @@ let userid = window.location.pathname
 let userid1 = userid.replace('/userstat/','')
 console.log(userid1)
 
-let  tabs = [{
-  route: "/home",
+let tabs = [{
+  route: "/profile/"+userid1,
   icon: faUserCircle,
   label: "User"
 },{
@@ -34,11 +34,10 @@ let  tabs = [{
   icon: faHome,
   label: "Home"
 },{
-  route: "/login",
+  route: "/setting/"+userid1,
   icon: faGear,
   label: "Settings"
 }]
-
 class UserStat extends Component {
     
   

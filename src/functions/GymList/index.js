@@ -19,18 +19,18 @@ const Brief = Item.Brief;
 
 
 let tabs = [{
-    route: "/home",
-    icon: faUserCircle,
-    label: "User"
-  },{
-    route: "/home/"+userid1,
-    icon: faHome,
-    label: "Home"
-  },{
-    route: "/login",
-    icon: faGear,
-    label: "Settings"
-  }]
+  route: "/profile/"+userid1,
+  icon: faUserCircle,
+  label: "User"
+},{
+  route: "/home/"+userid1,
+  icon: faHome,
+  label: "Home"
+},{
+  route: "/setting/"+userid1,
+  icon: faGear,
+  label: "Settings"
+}]
 class GymList extends Component {
 
     

@@ -21,8 +21,9 @@ const Brief = Item.Brief;
      let Gymname2 =Gymname1.split('_')
 
 //useGymname2[2] for user id
-let  tabs = [{
-  route: "/home",
+
+let tabs = [{
+  route: "/profile/"+Gymname2[2],
   icon: faUserCircle,
   label: "User"
 },{
@@ -30,7 +31,7 @@ let  tabs = [{
   icon: faHome,
   label: "Home"
 },{
-  route: "/login",
+  route: "/setting/"+Gymname2[2],
   icon: faGear,
   label: "Settings"
 }]

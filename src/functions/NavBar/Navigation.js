@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import './Navigation.less'
+
+
 const tabs = [{
   route: "/home",
   icon: faUserCircle,

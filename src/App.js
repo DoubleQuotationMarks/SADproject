@@ -145,11 +145,11 @@ const RouterList = () => (
 					<Switch>
 
                         <div>
-                        <Navigation />
-                        <Route exact path="/:userid" component={LoadableHomePage}/>
-                        <Route exact path={"/userstat"} component={LoadableUserStat}/>
-                        <Route exact path="/gymlist" component={LoadableUserGymList}/>
-                        <Route exact path="/gymlist/:branch_id" component={LoadableUserGymEquip}/>
+                        {/* <Navigation /> */}
+                        <Route exact path="/home/:user" component={LoadableHomePage}/>
+                        <Route exact path="/userstat/:user" component={LoadableUserStat}/>
+                        <Route exact path="/gym/:user" component={LoadableUserGymList}/>
+                        <Route exact path="/gym/gymstate/:branch_id" component={LoadableUserGymEquip}/>
                         </div>        
 					</Switch>
 	</Router>

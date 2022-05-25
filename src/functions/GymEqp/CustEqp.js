@@ -10,13 +10,30 @@ import cardio from './cardio.png'
 import chest from './chest.png'
 import hips from './hip.png'
 import leg from './leg.png'
-
+import { Nav, NavItem} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 const Item = List.Item;
 const Brief = Item.Brief;
      let Gymname = window.location.pathname
-     let Gymname1 = Gymname.replace('/gymlist/','')
+     let Gymname1 = Gymname.replace('/gym/gymstate/','')
      let Gymname2 =Gymname1.split('_')
 
+//useGymname2[2] for user id
+let  tabs = [{
+  route: "/home",
+  icon: faUserCircle,
+  label: "User"
+},{
+  route: "/home/"+Gymname2[2],
+  icon: faHome,
+  label: "Home"
+},{
+  route: "/login",
+  icon: faGear,
+  label: "Settings"
+}]
 
 
 // const api = axios.create({
@@ -55,7 +72,7 @@ class CustomerEquipment extends Component {
         return (
             <div style={{backgroundColor: "#FFF3D4" ,position:'fixed',width: '100%',height: '100%'}}>
                  
-            <Button href="/gymlist" inline style={{ marginLeft: '40px',marginTop:"50px" ,backgroundColor:'#FFF3D4'}}>Back</Button>
+            <Button href={"/gym/"+Gymname2[2]} inline style={{ marginLeft: '40px',marginTop:"50px" ,backgroundColor:'#FFF3D4'}}>Back</Button>
             <p class ="CustTittle">{Gymname2[0]}</p>   
             <br></br>
         
@@ -223,6 +240,31 @@ class CustomerEquipment extends Component {
         <br></br>
         <br></br>
         <br></br>
+        <div>
+    {/* Top Bar*/}
+
+   
+    {/* Bottom Tab Navigator*/}
+    <nav className="navbar fixed-bottom navbar-light w-10" inline style={{ height: '120px' , }}  role="navigation">
+      <Nav className="h-10"  >
+        <div className=" d-flex " >
+          {/* {flex-row justify-content-around} */}
+          {
+            tabs.map((tab, index) =>(
+              <NavItem key={`tab-${index}`}inline style={{ marginBottom :'50px' }}>
+                <NavLink to={tab.route} className="nav-link" activeClassName="active">
+                  <div className="row d-flex  justify-content-center ">
+                    <FontAwesomeIcon size="lg" icon={tab.icon}  />
+                    <div >{tab.label}</div>
+                  </div>
+                </NavLink>
+              </NavItem>
+            ))
+          }
+        </div>
+      </Nav>
+    </nav>
+  </div>
         </div>
       
         );

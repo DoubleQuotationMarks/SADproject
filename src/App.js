@@ -99,7 +99,7 @@ const RouterList = () => (
                         <Route exact path="/userstat/:user" component={LoadableUserStat}/>
                         <Route exact path="/gym/:user" component={LoadableUserGymList}/>
                         <Route exact path="/gym/gymstate/:branch_id" component={LoadableUserGymEquip}/>
-                        <Route exact path="/myprogram" component={LoadableMyProgram}/>
+                        <Route exact path="/myprogram/:user" component={LoadableMyProgram}/>
 
                         </div>        
 					</Switch>

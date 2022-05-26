@@ -2,10 +2,29 @@ import React from 'react';
 import { useState , useEffect} from "react";
 import {Component }from 'react';
 import { Button, WhiteSpace, WingBlank, Flex, Picker, List, Icon} from 'antd-mobile';
+import { Nav, NavItem} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import './MyProgram.less'
 
-
-
+let userid = window.location.pathname
+let userid1 = userid.replace('/myprogram/','')
+console.log(userid1)
+//use userid1 to get user 
+let tabs = [{
+  route: "/profile/"+userid1,
+  icon: faUserCircle,
+  label: "User"
+},{
+  route: "/home/"+userid1,
+  icon: faHome,
+  label: "Home"
+},{
+  route: "/setting/"+userid1,
+  icon: faGear,
+  label: "Settings"
+}]
 const seasons = [
   [
     {
@@ -55,6 +74,11 @@ const seasons = [
     },
   ],
 ];
+
+
+
+
+
 class MyProgram extends React.Component {
   state = {
     MO: [],
@@ -111,7 +135,7 @@ class MyProgram extends React.Component {
     return (
 
       <div style={{ width: '428px' , height: '926px', background: "#F5D19B"}}>
-          <div style={{ width: '100%' , height: '80px'}}><Button href="/" inline style={{ width: '60px' , height: '30px', marginLeft: '40px',marginTop:"50px",border:"transparent", background:"transparent"}}><div class="backb"><Icon type="left" size="md"/></div></Button></div>
+          <div style={{ width: '100%' , height: '80px'}}><Button href={"/home/"+userid1} inline style={{ width: '60px' , height: '30px', marginLeft: '40px',marginTop:"50px",border:"transparent", background:"transparent"}}><div class="backb"><Icon type="left" size="md"/></div></Button></div>
           <div class="title">My Program</div>
           <WhiteSpace></WhiteSpace>
           <WingBlank>
@@ -373,6 +397,26 @@ class MyProgram extends React.Component {
           <div style={{ width: '400px' , height: '25px'}}></div>
           <div class="infob" style={{ width: '300px'}}>We will suggest you a training program based on your body information.</div>
           </WingBlank>
+          {/* Bottom Tab Navigator*/}
+          <nav className="navbar fixed-bottom navbar-light w-10" inline style={{ height: '120px' , }}  role="navigation">
+                  <Nav className="h-10"  >
+                    <div className=" d-flex " >
+                      {/* {flex-row justify-content-around} */}
+                      {
+                        tabs.map((tab, index) =>(
+                          <NavItem key={`tab-${index}`}inline style={{ marginBottom :'50px' }}>
+                            <NavLink to={tab.route} className="nav-link" activeClassName="active">
+                              <div className="row d-flex  justify-content-center ">
+                                <FontAwesomeIcon size="lg" icon={tab.icon}  />
+                                <div >{tab.label}</div>
+                              </div>
+                            </NavLink>
+                          </NavItem>
+                        ))
+                      }
+                    </div>
+                  </Nav>
+                </nav>
           
       </div>
       

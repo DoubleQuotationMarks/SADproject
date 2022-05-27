@@ -30,11 +30,11 @@ const Register_Checked = ( { userID, password, Birthday, Email, Gender, Height, 
             <div className='login_register'>
                 {registerStr == 'Ok'?
                 <div className='register_success'>
-                    <Button onClick={()=>{setRC(false); }} href={'/home/'.concat(userID)}>註冊成功，繼續</Button>
+                    <Button onClick={()=>{setRC(false); }} href={'/home/'.concat(userID)}>Register success. Continue.</Button>
                 </div>:
                 <div>
-                    <Button onClick={()=>{setRC(false); setLR(true);}}>註冊失敗，返回登入頁</Button>
-                    <Button onClick={()=>{setRC(false); setRP(true);}}>返回註冊頁</Button>
+                    <Button onClick={()=>{setRC(false); setLR(true);}}>Register failed. Return to login page.</Button>
+                    <Button onClick={()=>{setRC(false); setRP(true);}}>Return to register page.</Button>
                 </div>}
             </div>
             <br></br>

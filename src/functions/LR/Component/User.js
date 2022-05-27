@@ -18,12 +18,12 @@ const User = ({ setUserID, setPassword }) => {
         <div>
           <InputItem placeholder="Account"
                      onChange = {onChangeID} >
-          帳號
+          Account
           </InputItem>
           <InputItem placeholder="Password"
                      type="password"
                      onChange = {onChangePwd} >
-          密碼
+          Password
           </InputItem>
         </div>
       );

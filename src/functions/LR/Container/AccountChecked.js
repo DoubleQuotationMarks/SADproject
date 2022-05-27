@@ -31,11 +31,11 @@ const Account_Checked = ( { userID, password, setAC, setLR, Role } ) => {
                 {loginStr == 'Ok'?
                 <div>
                     {Role == 'client'?
-                        <Button onClick={()=>{setAC(false); }} href={'/home/'.concat(userID)} >登入成功，繼續</Button>
-                        :<Button onClick={()=>{setAC(false); }} href={'/staff'} >登入成功，繼續</Button>
+                        <Button onClick={()=>{setAC(false); }} href={'/home/'.concat(userID)} >Login success. Continue.</Button>
+                        :<Button onClick={()=>{setAC(false); }} href={'/staff'} >Login success. Continue.</Button>
                     }
                 </div>    
-                :<Button onClick={()=>{setAC(false); setLR(true);}}>登入失敗，返回登入頁面</Button>}
+                :<Button onClick={()=>{setAC(false); setLR(true);}}>Login failed. Return to login page.</Button>}
             </div>
             <br></br>
             <br></br>

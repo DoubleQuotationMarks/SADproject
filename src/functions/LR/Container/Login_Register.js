@@ -20,10 +20,10 @@ const Login_Register = ( { setUserID, setPassword, setLR, setAC, setRP, setRole 
             <h1 className='login_register'>Logo</h1>
             <div className='login_register'>
                 <Flex>
-                    <Flex.Item style={{ paddingLeft: 45, paddingRight: 45 }}>
-                        <Button onClick={()=>{setRole('client');}} size='large'>Client</Button>
+                    <Flex.Item style={{ paddingLeft: 45, paddingRight: 45, width: 300 }}>
+                        <Button onClick={()=>{setRole('client');}} size='large' >Client</Button>
                     </Flex.Item>
-                    <Flex.Item style={{ paddingLeft: 45, paddingRight: 45 }}>
+                    <Flex.Item style={{ paddingLeft: 45, paddingRight: 45, width: 300 }}>
                         <Button onClick={()=>{setRole('staff');}} size='large'>Staff</Button>
                     </Flex.Item>
                 </Flex>

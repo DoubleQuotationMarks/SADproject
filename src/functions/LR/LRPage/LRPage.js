@@ -32,7 +32,7 @@ const LRPage = () => {
       {AC?
       <Account_Checked userID={UserID} password={Password} setAC={setAC} setLR={setLR} Role={Role} />:<div></div>}
       {RP?
-      <RegisterPage setUserID={setUserID} setPassword={setPassword} setName={setName} Gender={Gender} setGender={setGender} setEmail={setEmail} setPhone={setPhone} Birthday={Birthday} setBirthday={setBirthday} setWeight={setWeight} setHeight={setHeight} setRP={setRP} setRC={setRC} />:<div></div>}
+      <RegisterPage setUserID={setUserID} setPassword={setPassword} setName={setName} Gender={Gender} setGender={setGender} setEmail={setEmail} setPhone={setPhone} Birthday={Birthday} setBirthday={setBirthday} setWeight={setWeight} setHeight={setHeight} setRP={setRP} setRC={setRC} setLR={setLR} />:<div></div>}
       {RC?
       <Register_Checked userID={UserID} password={Password} Birthday={Birthday} Email={Email} Gender={Gender} Height={Height} Name={Name} Phone={Phone} Weight={Weight} setRC={setRC} setLR={setLR} setRP={setRP} />:<div></div>}
     </div>

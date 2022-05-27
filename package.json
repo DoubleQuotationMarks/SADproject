@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "antd": "^4.20.6",
     "antd-mobile": "^2.0.1",
+    "ant-design-mobile-chart": "^1.2.2",
     "autoprefixer": "7.1.2",
     "axios": "^0.27.2",
     "babel-core": "6.25.0",

@@ -104,7 +104,7 @@ class UserHome extends Component {
                 </Button>
                 <WhiteSpace />
                 <WhiteSpace />
-                <Button href="" className = "UserButtonOrangeTraningProgram" inline style={{ marginLeft: '80px' }}>
+                <Button href={"/myprogram/"+userid1} className = "UserButtonOrangeTraningProgram" inline style={{ marginLeft: '80px' }}>
                   
                   <p class ="UserButtonText">Training Program</p>
                 </Button>

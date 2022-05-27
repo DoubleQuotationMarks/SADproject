@@ -54,7 +54,7 @@ class UserHome extends Component {
     render() { 
         return (
     
-        <div class = "shapeHome" style={{  height: '926px'}}>
+        <div class = "shapeHome" >
            
          <h1 className ="HomeTitle">Home</h1>
       <WingBlank size="large">
@@ -136,6 +136,13 @@ class UserHome extends Component {
                   </Nav>
                 </nav>
               </div>
+
+
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
+              <br></br>
         </div>
 
         

@@ -1,0 +1,142 @@
+@import '~antd/dist/antd.css';
+
+.div_setting_container {
+    display: grid;
+    height: 65%;
+    background-color: white;
+    margin-top: 30px;
+}
+
+.div_setting_box {
+    background-color: #FFF3D4;
+    border-radius: 5vw 5vw 0vw 0vw;
+    padding: 0.2em 0.2em;
+    margin: auto;
+    width: 85vw;
+    height: 90vh;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    height: 20px;
+    padding: 0px 0.75em;
+    margin: 0.8em 0.5em;
+}
+
+.button_setting_back {
+    border: solid #090909 0.2mm;
+    background-color: white;
+    width: 15vw;
+    height: 7vw;
+    margin-left: 3vw;
+    font-size: 3.5vw;
+}
+
+.button_setting_arrow {
+    float: right;
+    margin-right: 5vw;
+    margin-top: 1vh;
+    background: none;
+    font-size: 4vw;
+}
+
+.button_setting_logout {
+    background: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    color: #DE5D4D;
+    font-weight: 500;
+    font-size: 5vw;
+}
+
+.h1_setting_head {
+    margin: auto;
+    margin-bottom: 5vw;
+    font-size: 6vw;
+    font-weight: 500;
+}
+
+.h1_setting_name {
+    text-align: center;
+    margin-top: 0.5vh;
+    font-size: 4.5vw;
+    font-weight: 400;
+    color: #183D4D;
+}
+
+.img_setting_head {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2vh;
+    border-radius: 50%;
+    width: 20vw;
+}
+
+.img_setting_icon {
+    margin-top: 3vh;
+    width: 9vw;
+}
+
+.p_setting_sub-title {
+    color: #ADADAD;
+    margin-left: 3vw;
+    margin-bottom: 0vw;
+    font-size: 4vw;
+}
+
+.p_setting_subsub {
+    display: inline-block;
+    margin-left: 5vw;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    font-size: 4vw;
+    font-weight: 500;
+}
+
+.p_setting_icon {
+    font-size: 4vw;
+    font-weight: 500;
+    margin-top: 2vh;
+}
+
+.span_setting_icon {
+    display: block;
+    text-align: center;
+}
+
+hr {
+    border: none;
+    background-color: #CACACA;
+    height: 0.02vh;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.hr_setting_jump {
+    border: none;
+    background-color: #CACACA;
+    margin-bottom: 6vh;
+}
+
+.toggle_setting_lu {
+    float: right;
+    margin-top: 2vh;
+    margin-right: 5vw;
+}
+
+.select_setting_lu {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    font-size: 4vw;
+    width: 45vw;
+}
+
+.form_setting_lu {
+    margin-top: 8vh;
+}

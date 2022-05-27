@@ -2,15 +2,25 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import React from 'react'
 
-const RegisterCheck = ({ userID, password, Birthday, Email, Gender, Height, Name, Phone, Weight, setRegisterStr }) => {
+function pad(d) {
+  return (d < 10) ? '0' + d.toString() : d.toString();
+}
 
+const RegisterCheck = ({ userID, password, Birthday, Email, Gender, Height, Name, Phone, Weight, setRegisterStr }) => {
+  var year = Birthday.getFullYear();
+  var month = pad(Birthday.getMonth()+1);//js從0開始取
+  var date = pad(Birthday.getDate());
+
+  var datetime = year + '/' + month + '/' + date;
+
+  var gender = Gender.toString();
 
   useEffect(() => {
     axios.post('https://sadbackend-cyt.herokuapp.com/api/v1/user/signup', {         //某種function，傳入使用者帳密進入資料庫中，並確認是否有重複使用者ID(假設回傳一個字串)
     "account": userID,
-    "birthday": Birthday,
+    "birthday": datetime,
     "email": Email,
-    "gender": Gender,
+    "gender": gender,
     "height": Number(Height),
     "name": Name,
     "password": password,

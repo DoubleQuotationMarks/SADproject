@@ -88,6 +88,13 @@ const LoadableHomePage= Loadable({
       delay: 0
   });
 
+  const LoadableReserve = Loadable({
+    loader: () => import("./functions/Reservation/index"),
+    loading: Loading,
+    delay: 0,
+  });
+  
+
 const RouterList = () => (
 	<Router>
 					<Switch> 
@@ -96,6 +103,7 @@ const RouterList = () => (
                         <Route exact path="/staff/status" component={LoadableStaffStatus}/>
                         <Route exact path="/staff/static" component={LoadableStaffStatic}/>
                         <Route exact path="/staff/gympanel/:id" component={LoadableStaffGymPanel}/>
+                        <Route exact path="/reservation/:user" component={LoadableReserve} />
                         
                         <Route exact path="/setting/:user" component={LoadableSetting}/>
                         <Route exact path="/profile/:user" component={LoadableProfile}/>

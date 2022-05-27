@@ -22,6 +22,13 @@ function App() {
     const [page, setPage] = useState('main');
 
     useEffect(() => {
+        const reloadCount = sessionStorage.getItem('reloadCount');
+        if(reloadCount < 1) {
+            sessionStorage.setItem('reloadCount', String(reloadCount + 1));
+            window.location.reload();
+        } else {
+            sessionStorage.removeItem('reloadCount');
+        }
         loadData()
     }, []);
 
@@ -78,7 +85,9 @@ function App() {
                     <p className='p_setting_subsub'>Contact Us</p>
                     <button className='button_setting_arrow' onClick={() => setPage('contact')}>></button>
                     <hr />
-                    <button className='button_setting_logout'>Log Out</button>
+                    <Link to={'/'}>
+                        <button className='button_setting_logout'>Log Out</button>
+                    </Link>
                 </div>
             </div>
         : page === 'notification' ?

@@ -5,7 +5,7 @@ import './UserHome.less'
 import getUrlQuery from '../../utils/getUrlQuery'
 import axios from 'axios'
 import { Nav, NavItem} from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 const Item = List.Item;
@@ -30,6 +30,9 @@ let tabs = [{
   icon: faGear,
   label: "Settings"
 }]
+
+const reserve_path = '/reservation/' + userid1
+
 class UserHome extends Component {
 
 
@@ -62,7 +65,7 @@ class UserHome extends Component {
         <Card className ="am-cardBackGround"  >
           <Card.Header 
             title="My Reservation"
-            extra={<Button  inline size="small"  className= "reservationButton"><p>ADD</p></Button>}
+            extra={<Link to={reserve_path}><Button  inline size="small"  className= "reservationButton"><p>ADD</p></Button></Link>}
       />
       {this.state.reservation === null ?
           <div></div>

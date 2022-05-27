@@ -20,6 +20,11 @@ function Loading(props) {
 }
 
 
+const LoadableLRPage= Loadable({
+  loader: () => import('./functions/LR/LRPage/LRPage'),
+    loading: Loading,
+    delay: 0
+});
 
 const LoadableHomePage= Loadable({
     loader: () => import('./functions/UserHome/userHome'),
@@ -86,6 +91,7 @@ const LoadableHomePage= Loadable({
 const RouterList = () => (
 	<Router>
 					<Switch> 
+                        <Route exact path="/" component={LoadableLRPage}/>
                         <Route exact path="/staff" component={LoadableStaffHome}/>
                         <Route exact path="/staff/status" component={LoadableStaffStatus}/>
                         <Route exact path="/staff/static" component={LoadableStaffStatic}/>

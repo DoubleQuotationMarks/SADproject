@@ -1,0 +1,71 @@
+.background{
+    background-image: url("../images/background.png");
+    background-size: 100% 200%;
+}
+
+.login_register{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+.login_button{
+    background-image: url("../images/Login.png");
+    background-size: 100% 100%;
+
+    width: 500px;
+    height: 75px;
+    line-height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    border: 2px;
+    box-shadow: 5px 5px;
+
+}
+
+.Account_Check{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.register_success {
+    background-image: url("../images/Sign\ Up\ Success.png");
+    background-size: 100% 100%;
+}
+
+.continue_button {
+    background-image: url("../images/continue.png");
+    background-size: 100% 100%;
+
+    width: 500px;
+    height: 75px;
+    line-height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    border: 2px;
+    box-shadow: 5px 5px;
+}
+
+.register_button {
+    background-image: url("../images/signup.png");
+    background-size: 100% 100%;
+
+    width: 500px;
+    height: 75px;
+    line-height: 40px;
+    line-height: 40px;
+    border-radius: 25px;
+    border: 2px;
+    box-shadow: 5px 5px;
+}

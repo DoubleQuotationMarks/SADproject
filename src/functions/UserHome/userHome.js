@@ -64,27 +64,34 @@ class UserHome extends Component {
             title="My Reservation"
             extra={<Button  inline size="small"  className= "reservationButton"><p>ADD</p></Button>}
       />
-      <Card.Body>
-      <div style={{ marginTop: 10, marginBottom: 10 }}>
-      {this.state.reservation.map( ( reservationData)  =>(
-      <div>
-          
-          <WingBlank size="lg">
-          <WhiteSpace size="lg" />
-          <Card>
-            <Card.Header
-              title={reservationData.category}
-              extra={reservationData.machine_id}
-            />
-            <Card.Footer content={new Date(reservationData.date).toDateString()}  extra={reservationData.gym_name} />
-          </Card>
-        </WingBlank>       
+      {this.state.reservation === null ?
+          <div></div>
+        :
+        <Card.Body>
+        <div style={{ marginTop: 10, marginBottom: 10 }}>
+            {this.state.reservation.map( ( reservationData)  =>(
+        <div>
             
-   
-    </div>
-           ) )}
-          </div>
-      </Card.Body>
+            <WingBlank size="lg">
+            <WhiteSpace size="lg" />
+            <Card>
+              <Card.Header
+                title={reservationData.category}
+                extra={reservationData.machine_id}
+              />
+              <Card.Footer content={new Date(reservationData.date).toDateString()}  extra={reservationData.gym_name} />
+            </Card>
+          </WingBlank>       
+              
+    
+      </div>
+            ) )}
+
+            </div>
+        </Card.Body>
+      }
+      
+
     </Card>
     <WhiteSpace size="lg" />
     </WingBlank>
@@ -142,7 +149,7 @@ class UserHome extends Component {
               <br></br>
               <br></br>
               <br></br>
-              <br></br>
+              <br></br> 
         </div>
 
         

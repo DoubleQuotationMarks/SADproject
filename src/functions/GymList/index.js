@@ -61,6 +61,7 @@ class GymList extends Component {
                    
                 <Button href={"/home/"+userid1} inline style={{ marginLeft: '40px',marginTop:"50px", backgroundColor:'#FFF3D4' }}>Back</Button>
                 <h1 class ="GymTitle"> Gym List</h1>
+              
                 {this.state.Gym.map((GymData) => (
                    
                         <div>
@@ -98,7 +99,10 @@ class GymList extends Component {
 
 
                 }
-
+<br></br>
+<br></br>
+<br></br>
+<br></br>
 <div>
     {/* Top Bar*/}
 

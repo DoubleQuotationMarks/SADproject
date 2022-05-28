@@ -8,10 +8,10 @@
 
 ## 运行本项目
 #### 克隆项目
-    git clone https://github.com/cllgeek/geekjc-antd-mobile.git
+    git clone https://github.com/DoubleQuotationMarks/SADproject
 
 #### 进入目录
-    cd geekjc-antd-mobile
+    cd SADproject
 
 #### 安装依赖
     npm install

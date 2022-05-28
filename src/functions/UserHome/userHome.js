@@ -8,6 +8,7 @@ import { Nav, NavItem} from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGear, faHome, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import moment from 'moment'
 const Item = List.Item;
 const Brief = Item.Brief;
 
@@ -82,7 +83,9 @@ class UserHome extends Component {
                 title={reservationData.category}
                 extra={reservationData.machine_id}
               />
-              <Card.Footer content={new Date(reservationData.date).toDateString()}  extra={reservationData.gym_name} />
+              {/* new Date(reservationData.date).toDateString() */}
+             
+              <Card.Footer content={ moment(reservationData.date).format('MMMM Do YYYY, h:mm:ss a')}  extra={reservationData.gym_name} />
             </Card>
           </WingBlank>       
               

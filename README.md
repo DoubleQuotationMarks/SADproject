@@ -8,7 +8,7 @@
 
 ## 运行本项目
 #### 克隆项目
-    git clone [https://github.com/cllgeek/geekjc-antd-mobile.git](https://github.com/DoubleQuotationMarks/SADproject)
+    git clone https://github.com/DoubleQuotationMarks/SADproject
 
 #### 进入目录
     cd SADproject

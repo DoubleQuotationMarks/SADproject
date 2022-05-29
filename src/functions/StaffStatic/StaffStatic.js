@@ -36,7 +36,7 @@ class StaffStatic extends Component {
               <Flex justify="center">
               <div class='roundborder' style={{ width: '190px' , height: '118px', background: "#DE5D4D", color: '#FFFFFF'}}>
                   <Flex>
-                  <div class="bigword" style={{ width: '130px' , height: '90px'}}>2.0</div>
+                  <div class="bigword" style={{ width: '130px' , height: '90px'}}>29</div>
                   <div class="bigunit" style={{ width: '60px' , height: '90px'}}>ppl</div>
                   </Flex>
                   <div class="smallword" >Highest user attendence</div>
@@ -45,7 +45,7 @@ class StaffStatic extends Component {
               <div style={{ width: '0px' , height: '118px'}}></div>
               <div class='roundborder' style={{ width: '190px' , height: '118px', background: "#F5D19B", color: '#000000'}}>
                   <Flex>
-                  <div class="bigword" style={{ width: '130px' , height: '90px'}}>1.13</div>
+                  <div class="bigword" style={{ width: '130px' , height: '90px'}}>1.6</div>
                   <div class="bigunit" style={{ width: '60px' , height: '90px'}}>hour(s)</div>
                   </Flex>
                   <div class="smallword" >Average user stay time</div>

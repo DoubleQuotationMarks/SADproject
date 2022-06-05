@@ -2,19 +2,6 @@ import { useEffect, useState } from 'react';
 import { InputItem, List, Picker, DatePicker } from 'antd-mobile';
 import React from 'react'
 
-/*const gender = [
-    [
-      {
-        label: 'male',
-        value: 'male',
-      },
-      {
-        label: 'female',
-        value: 'female',
-      },
-    ],
-]*/
-
 const Register = ({ setUserID, setPassword, setName, Gender, setGender, setEmail, setPhone, Birthday, setBirthday, setWeight, setHeight }) => {
     
       const onChangeID = (value) => {

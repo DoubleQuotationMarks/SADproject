@@ -16,7 +16,7 @@ const RegisterCheck = ({ userID, password, Birthday, Email, Gender, Height, Name
   var gender = Gender.toString();
 
   useEffect(() => {
-    axios.post('https://sadbackend-cyt.herokuapp.com/api/v1/user/signup', {         //某種function，傳入使用者帳密進入資料庫中，並確認是否有重複使用者ID(假設回傳一個字串)
+    axios.post('https://sadbackend-cyt.herokuapp.com/api/v1/user/signup', {         
     "account": userID,
     "birthday": datetime,
     "email": Email,
